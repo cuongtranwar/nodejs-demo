@@ -1,12 +1,14 @@
 const express = require('express');
+const HttpConnector = require('../db/index');
 
-const booksQuery = require('../db/index');
 
 
 const BookRouter = express.Router();
+const httpConnector = new HttpConnector();
+
 const routes = (nav) => {
   BookRouter.get('/', async (rep, res) => {
-    const { rows: books } = await booksQuery.query('SELECT * FROM BOOKS');
+    const books = await httpConnector.getAll('library', 'books');
     res.render('bookListView',
       {
         nav,
@@ -16,13 +18,12 @@ const routes = (nav) => {
   });
   BookRouter.get('/:id', async (rep, res) => {
     const { id } = rep.params;
-    const { rows } = await booksQuery.query('Select * from books where id =$1', [id]);
-
+    const book = await httpConnector.getById(id, 'library', 'books');
     res.render('bookView',
       {
         nav,
         title: 'Cuong Test',
-        book: rows[0]
+        book
       });
   });
   return BookRouter;
