@@ -55,7 +55,17 @@ class HttpConnector {
       const db = client.db(dbName);
       return await db.collection(collection).findOne({_id: new ObjectID(id)});
     } catch (err) {
-      debug(`select Many failed ${err}`);
+      debug(`select One failed ${err}`);
+    };
+    client.close();
+  }
+  async getUserByName(username, dbName, collection) {
+    try {
+      const client = await this.request();
+      const db = client.db(dbName);
+      return await db.collection(collection).findOne({username});
+    } catch (err) {
+      debug(`select One failed ${err}`);
     };
     client.close();
   }

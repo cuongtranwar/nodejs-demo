@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "acorn": "^6.0.2",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "bootstrap": "^3.2.0",
     "chalk": "^2.4.1",
@@ -28,7 +29,8 @@
     "passport-local": "^1.0.0",
     "pg": "^7.6.0",
     "pug": "^2.0.3",
-    "session": "^0.1.0"
+    "session": "^0.1.0",
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",

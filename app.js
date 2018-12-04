@@ -23,7 +23,7 @@ const nav = [
   }];
 const BookRouter = require('./src/routes/bookRoutes')(nav);
 const AdminRouter = require('./src/routes/adminRoutes')(nav);
-const AuthRouter = require('./src/routes/authRoutes')();
+const AuthRouter = require('./src/routes/authRoutes')(nav);
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '/public/')));
 app.use(bodyParser.json());
